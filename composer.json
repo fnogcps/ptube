@@ -1,0 +1,37 @@
+{
+	"name": "fnogcps/ptube",
+	"autoload": {
+		"psr-4": {
+			"fnogcps\\Ptube\\": "app/"
+		}
+	},
+	"homepage": "https://github.com/fnogcps/ptube",
+	"authors": [
+		{
+			"name": "Felipe Nogueira",
+			"email": "contato.fnog@gmail.com"
+		},
+		{
+			"name": "Marcos Vinicius",
+			"email": "omarcosviniciusdev@gmail.com"
+		}
+	],
+	"require-dev": {
+		"nunomaduro/phpinsights": "^2.7"
+	},
+	"scripts": {
+		"start": [
+			"php -S 0.0.0.0:8000 -t public"
+		]
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"license": "MIT",
+	"require": {
+		"vlucas/phpdotenv": "^5.6",
+		"bramus/router": "~1.6"
+	}
+}
