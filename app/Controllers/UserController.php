@@ -15,10 +15,16 @@ class UserController
         $this->model = $model;
     }
 
-    public function createUser(string $user, string $name, string $pwd)
+    public function createUser(array $req)
     {
+        // sanatize filters
+        // sanatize operations
+        // ...
+
+        $pwd = password_hash($req['password'], PASSWORD_DEFAULT);
+
         try {
-            $target = $this->model->create($user, $name, $pwd);
+            $target = $this->model->create($req['user'], $req['name'], $pwd);
         } catch (Throwable $e) {
             echo $e->getMessage();
         }
@@ -32,11 +38,22 @@ class UserController
             echo $e->getMessage();
         }
     }
-    public function getUser(string $user)
+
+    public function getUser(array $req)
     {
+        // sanatize filters
+        // sanatize operations
+        // ...
+
         try {
-            $target = $this->model->get($user);
-            echo json_encode($target);
+            // get user data
+            $target = $this->model->get($req['user']);
+            if(password_verify($req['password'], $target[0]->password)) {
+                echo json_encode($target);
+            } else {
+                $err = array("error" => "Login inválido");
+                echo json_encode($err);
+            }
         } catch (Throwable $e) {
             echo $e->getMessage();
         }
