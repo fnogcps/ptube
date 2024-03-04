@@ -13,12 +13,12 @@ use fnogcps\Ptube\Controllers\UserController;
 
 $app = AppFactory::create();
 
-$app->post('/create', static function (Request $req, Response $res) {
+$app->post('/api/create', static function (Request $req, Response $res) {
     (new UserController())->createUser($req->getParsedBody());
     return $res->withHeader('Content-Type', 'application/json');
 });
 
-$app->post('/login', static function (Request $req, Response $res) {
+$app->post('/api/login', static function (Request $req, Response $res) {
     (new UserController())->getUser($req->getParsedBody());
     return $res->withHeader('Content-Type', 'application/json');
 });

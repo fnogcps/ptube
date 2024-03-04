@@ -48,7 +48,7 @@ class UserController
         try {
             // get user data
             $target = $this->model->get($req['user']);
-            if(password_verify($req['password'], $target[0]->password)) {
+            if (password_verify($req['password'], $target[0]->password)) {
                 echo json_encode($target);
             } else {
                 $err = array("error" => "Login inválido");
