@@ -41,4 +41,12 @@ class User
         $q->execute();
         return $q->fetchAll();
     }
+
+    public function update(string $user, string $new_name)
+    {
+        $q = $this->db->prepare('UPDATE users SET name = :new_name WHERE (user = :user)');
+        $q->bindValue('user', $user, PDO::PARAM_STR);
+        $q->bindValue('new_name', $new_name, PDO::PARAM_STR);
+        $q->execute();
+    }
 }

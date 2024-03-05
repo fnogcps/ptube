@@ -58,4 +58,10 @@ class UserController
             echo $e->getMessage();
         }
     }
+
+    public function updateUser(array $req)
+    {
+        $target = $this->model->update('test', $req['new_name']);
+        echo json_encode($target);
+    }
 }

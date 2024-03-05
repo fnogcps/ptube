@@ -23,4 +23,11 @@ $app->post('/api/login', static function (Request $req, Response $res) {
     return $res->withHeader('Content-Type', 'application/json');
 });
 
+// xyz just for tests
+$app->post('/api/users/xyz', static function (Request $req, Response $res) {
+    (new UserController())->updateUser($req->getParsedBody());
+    return $res->withHeader('Content-Type', 'application/json');
+});
+
+
 $app->run();

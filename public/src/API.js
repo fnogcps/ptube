@@ -20,4 +20,13 @@ export default class API {
       }
     });
   }
+
+  async updateUser(data) {
+    return await axios.post("/api/users/xyz", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: authSession
+      }
+    });
+  }
 }
